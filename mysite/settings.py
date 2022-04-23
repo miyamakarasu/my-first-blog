@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-1@3xy8m$p0@3t)6zfg(pfq2$z9itah9(9i3gzaw_kqm2i@64!f'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -138,3 +138,13 @@ LOGIN_REDIRECT_URL = '/'
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
+# Django アプリをerokuにデプロイする方法Qiita
+
+try:
+    from .local_settings import *
+except ImportError:
+    pass
+
+
+if not DEBUG:
+    SECRET_KEY = os.environ['SECRET_KEY']
