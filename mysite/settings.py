@@ -106,6 +106,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+MARKDOWN_EXTENSIONS = [
+    'markdown.extensions.extra',
+    'markdown.extensions.toc',
+]
+
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/

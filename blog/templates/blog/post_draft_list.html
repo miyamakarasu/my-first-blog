@@ -2,6 +2,7 @@
 
 <!--<div data-gb-custom-block data-tag="block"></div>-->
 {% extends "blog/base.html" %}
+{% load blog %}
 
 {% block content %}
     {% for post in posts %}   
@@ -12,7 +13,7 @@
             <p class="date">created: {{ post.created_date|date:'d-m-Y' }}</p>
             <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
             <!--<h1><a href="<div data-gb-custom-block data-tag='url' data-0='post_detail'>">{{ post.title }}</a></h1>-->
-            <p>{{ post.text|truncatechars:200 }}</p>
+            <p>{{ post.text|truncatechars:200|markdown_to_html }}</p>
         </div>
         
      {% endfor %}
